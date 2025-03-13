@@ -1,0 +1,41 @@
+<div class="max-w-4xl mx-auto mt-6">
+  <h2 class="text-xl font-bold mb-4">Lista de Beneficios Realizados</h2>
+
+  <!-- Tabla de beneficios -->
+  <table class="w-full border-collapse border border-gray-300">
+    <thead>
+    <tr class="bg-gray-200">
+      <th class="border p-2">ID Remisión</th>
+      <th class="border p-2">ID Empresa</th>
+      <th class="border p-2">Auditor</th>
+      <th class="border p-2">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let beneficio of beneficios" class="hover:bg-gray-100">
+      <td class="border p-2 text-center">{{ beneficio.id_remision }}</td>
+      <td class="border p-2 text-center">{{ beneficio.id_empresa }}</td>
+      <td class="border p-2 text-center">{{ beneficio.nombre_auditor }}</td>
+      <td class="border p-2 text-center">
+        <button (click)="selectBeneficio(beneficio)" class="bg-blue-500 text-white px-2 py-1 rounded">Editar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal de edición -->
+  <div *ngIf="selectedBeneficio" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+      <h3 class="text-lg font-bold mb-4">Editar Beneficio</h3>
+
+      <label class="block mb-2">Peso (kg)</label>
+      <input [(ngModel)]="selectedBeneficio.aves_asfixiadas" type="number" class="w-full border p-2 rounded mb-4">
+
+      <div class="flex justify-between">
+        <button (click)="closeModal()" class="bg-gray-500 text-white px-3 py-2 rounded">Cancelar</button>
+        <button (click)="updateBeneficio()" class="bg-green-500 text-white px-3 py-2 rounded">Actualizar Cambios</button>
+      </div>
+
+    </div>
+  </div>
+</div>

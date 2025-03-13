@@ -1,0 +1,30 @@
+export interface Beneficio {
+  id_remision: string;
+  id_empresa: string;
+  region_procedencia: string;
+  granja: string;
+  galpon: string;
+  linea_aves: string;
+  sexo: string;
+  edad: number;
+  peso_promedio_ave_granja: number;
+  placa_vehiculo: string;
+  id_conductor: string;
+  nombre_conductor: string;
+  id_plan_sanitario: string;
+  tp_profesional_granja: string;
+  nombre_profesional: string;
+  tp_profesional_planta: string;
+  nombre_auditor: string;
+  hora_beneficio: string;
+  aves_por_guacal: number;
+  guacales_vacios: number;
+  guacales_usados: number;
+  guacal_extra: number;
+  aves_remisionadas: number;
+  aves_colgadas: number;
+  aves_asfixiadas: number;
+  aves_en_guacal_extra: number;
+  peso_1_guacal_vacio: number;
+  peso_torre_7_guacales: number;
+}

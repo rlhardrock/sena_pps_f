@@ -1,0 +1,299 @@
+<div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+  <h2 class="text-lg font-bold mb-4">Registro del Beneficio</h2>
+
+  <form [formGroup]="beneficioForm" (ngSubmit)="onSubmit()">
+
+    <!-- Selección de ID Remisión -->
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Remisión</label>
+      <select formControlName="id_remision"
+              class="w-full border p-2 rounded"
+              [ngClass]="{ 'border-red-500': beneficioForm.get('id_remision')?.invalid && beneficioForm.get('id_remision')?.touched }">
+        <option value="">Seleccione</option>
+        <option *ngFor="let id of idsRemisiones" [value]="id">{{ id }}</option>
+      </select>
+      <p *ngIf="beneficioForm.get('id_remision')?.invalid && beneficioForm.get('id_remision')?.touched"
+         class="text-red-500 text-sm">Debe seleccionar un ID válido.</p>
+    </div>
+
+    <!--Todos los campos importantes de beneficio-->
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Remisión</label>
+      <input type="text" formControlName="id_remision"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('id_remision')?.invalid && beneficioForm.get('id_remision')?.touched }">
+      <p *ngIf="beneficioForm.get('id_remision')?.invalid && beneficioForm.get('id_remision')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Empresa</label>
+      <input type="text" formControlName="id_empresa"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('id_empresa')?.invalid && beneficioForm.get('id_empresa')?.touched }">
+      <p *ngIf="beneficioForm.get('id_empresa')?.invalid && beneficioForm.get('id_empresa')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Región Procedencia</label>
+      <input type="text" formControlName="region_procedencia"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('region_procedencia')?.invalid && beneficioForm.get('region_procedencia')?.touched }">
+      <p *ngIf="beneficioForm.get('region_procedencia')?.invalid && beneficioForm.get('region_procedencia')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Granja</label>
+      <input type="text" formControlName="granja"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('granja')?.invalid && beneficioForm.get('granja')?.touched }">
+      <p *ngIf="beneficioForm.get('granja')?.invalid && beneficioForm.get('granja')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Galpón</label>
+      <input type="text" formControlName="galpon"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('galpon')?.invalid && beneficioForm.get('galpon')?.touched }">
+      <p *ngIf="beneficioForm.get('galpon')?.invalid && beneficioForm.get('galpon')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Linea Aves</label>
+      <input type="text" formControlName="linea_aves"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('linea_aves')?.invalid && beneficioForm.get('linea_aves')?.touched }">
+      <p *ngIf="beneficioForm.get('linea_aves')?.invalid && beneficioForm.get('linea_aves')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <!-- Selector de Sexo (Macho, Hembra, Mixto) -->
+    <div class="mb-4">
+      <label class="block text-gray-700">Sexo</label>
+      <div class="flex space-x-4">
+        <label class="flex items-center">
+          <input type="radio" formControlName="sexo" value="Macho" class="mr-2"> Macho
+        </label>
+        <label class="flex items-center">
+          <input type="radio" formControlName="sexo" value="Hembra" class="mr-2"> Hembra
+        </label>
+        <label class="flex items-center">
+          <input type="radio" formControlName="sexo" value="Mixto" class="mr-2"> Mixto
+        </label>
+      </div>
+      <p *ngIf="beneficioForm.get('sexo')?.invalid && beneficioForm.get('sexo')?.touched"
+         class="text-red-500 text-sm">Debe seleccionar una opción.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Edad</label>
+      <input type="number" formControlName="edad"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('edad')?.invalid && beneficioForm.get('edad')?.touched }">
+      <p *ngIf="beneficioForm.get('edad')?.invalid && beneficioForm.get('edad')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Peso Ave en Granja Individual (gr)</label>
+      <input type="text" formControlName="peso_promedio_ave_granja"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('peso_promedio_ave_granja')?.invalid && beneficioForm.get('peso_promedio_ave_granja')?.touched }">
+      <p *ngIf="beneficioForm.get('peso_promedio_ave_granja')?.invalid && beneficioForm.get('peso_promedio_ave_granja')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Vehiculo</label>
+      <input type="text" formControlName="placa_vehiculo"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('placa_vehiculo')?.invalid && beneficioForm.get('placa_vehiculo')?.touched }">
+      <p *ngIf="beneficioForm.get('placa_vehiculo')?.invalid && beneficioForm.get('placa_vehiculo')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Conductor</label>
+      <input type="text" formControlName="id_conductor"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('id_conductor')?.invalid && beneficioForm.get('id_conductor')?.touched }">
+      <p *ngIf="beneficioForm.get('id_conductor')?.invalid && beneficioForm.get('id_conductor')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Nombre Conductor</label>
+      <input type="text" formControlName="nombre_conductor"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('nombre_conductor')?.invalid && beneficioForm.get('nombre_conductor')?.touched }">
+      <p *ngIf="beneficioForm.get('nombre_conductor')?.invalid && beneficioForm.get('nombre_conductor')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Plan Sanitario</label>
+      <input type="text" formControlName="id_plan_sanitario"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('id_plan_sanitario')?.invalid && beneficioForm.get('id_plan_sanitario')?.touched }">
+      <p *ngIf="beneficioForm.get('id_plan_sanitario')?.invalid && beneficioForm.get('id_plan_sanitario')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Profesional Granja</label>
+      <input type="text" formControlName="tp_profesional_granja"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('tp_profesional_granja')?.invalid && beneficioForm.get('tp_profesional_granja')?.touched }">
+      <p *ngIf="beneficioForm.get('tp_profesional_granja')?.invalid && beneficioForm.get('tp_profesional_granja')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Nombre Profesional Granja</label>
+      <input type="text" formControlName="nombre_profesional"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('nombre_profesional')?.invalid && beneficioForm.get('nombre_profesional')?.touched }">
+      <p *ngIf="beneficioForm.get('nombre_profesional')?.invalid && beneficioForm.get('nombre_profesional')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">ID Profesional Planta</label>
+      <input type="text" formControlName="tp_profesional_planta"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('tp_profesional_planta')?.invalid && beneficioForm.get('tp_profesional_planta')?.touched }">
+      <p *ngIf="beneficioForm.get('tp_profesional_planta')?.invalid && beneficioForm.get('tp_profesional_planta')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Nombre Profesional Planta</label>
+      <input type="text" formControlName="nombre_auditor"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('nombre_auditor')?.invalid && beneficioForm.get('nombre_auditor')?.touched }">
+      <p *ngIf="beneficioForm.get('nombre_auditor')?.invalid && beneficioForm.get('nombre_auditor')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Hora Inicio Beneficio</label>
+      <input type="datetime-local" formControlName="hora_beneficio"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('hora_beneficio')?.invalid && beneficioForm.get('hora_beneficio')?.touched }">
+      <p *ngIf="beneficioForm.get('hora_beneficio')?.invalid && beneficioForm.get('hora_beneficio')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Aves por Guacal</label>
+      <input type="text" formControlName="aves_por_guacal"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('aves_por_guacal')?.invalid && beneficioForm.get('aves_por_guacal')?.touched }">
+      <p *ngIf="beneficioForm.get('aves_por_guacal')?.invalid && beneficioForm.get('aves_por_guacal')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Guacales Vacios</label>
+      <input type="text" formControlName="guacales_vacios"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('guacales_vacios')?.invalid && beneficioForm.get('guacales_vacios')?.touched }">
+      <p *ngIf="beneficioForm.get('guacales_vacios')?.invalid && beneficioForm.get('guacales_vacios')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Guacales Usados</label>
+      <input type="text" formControlName="guacales_usados"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('guacales_usados')?.invalid && beneficioForm.get('guacales_usados')?.touched }">
+      <p *ngIf="beneficioForm.get('guacales_usados')?.invalid && beneficioForm.get('guacales_usados')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Guacal Extra Usado</label>
+      <input type="text" formControlName="guacal_extra"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('guacal_extra')?.invalid && beneficioForm.get('guacal_extra')?.touched }">
+      <p *ngIf="beneficioForm.get('guacal_extra')?.invalid && beneficioForm.get('guacal_extra')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Aves Remisionadas</label>
+      <input type="text" formControlName="aves_remisionadas"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('aves_remisionadas')?.invalid && beneficioForm.get('aves_remisionadas')?.touched }">
+      <p *ngIf="beneficioForm.get('aves_remisionadas')?.invalid && beneficioForm.get('aves_remisionadas')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Aves Colgadas</label>
+      <input type="text" formControlName="aves_colgadas"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('aves_colgadas')?.invalid && beneficioForm.get('aves_colgadas')?.touched }">
+      <p *ngIf="beneficioForm.get('aves_colgadas')?.invalid && beneficioForm.get('aves_colgadas')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Aves Asfixiadas</label>
+      <input type="text" formControlName="aves_asfixiadas"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('aves_asfixiadas')?.invalid && beneficioForm.get('aves_asfixiadas')?.touched }">
+      <p *ngIf="beneficioForm.get('aves_asfixiadas')?.invalid && beneficioForm.get('aves_asfixiadas')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Aves en el Guacal Extra</label>
+      <input type="text" formControlName="aves_en_guacal_extra"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('aves_en_guacal_extra')?.invalid && beneficioForm.get('aves_en_guacal_extra')?.touched }">
+      <p *ngIf="beneficioForm.get('aves_en_guacal_extra')?.invalid && beneficioForm.get('aves_en_guacal_extra')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Peso de 1 Guacal Vacio</label>
+      <input type="text" formControlName="peso_1_guacal_vacio"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('peso_1_guacal_vacio')?.invalid && beneficioForm.get('peso_1_guacal_vacio')?.touched }">
+      <p *ngIf="beneficioForm.get('peso_1_guacal_vacio')?.invalid && beneficioForm.get('peso_1_guacal_vacio')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700">Peso Torre de 7 Guacales</label>
+      <input type="text" formControlName="peso_torre_7_guacales"
+             class="w-full border p-2 rounded"
+             [ngClass]="{ 'border-red-500': beneficioForm.get('peso_torre_7_guacales')?.invalid && beneficioForm.get('peso_torre_7_guacales')?.touched }">
+      <p *ngIf="beneficioForm.get('peso_torre_7_guacales')?.invalid && beneficioForm.get('peso_torre_7_guacales')?.touched"
+         class="text-red-500 text-sm">.</p>
+    </div>
+
+    <!-- Calidad -->
+    <!--<div class="mb-4">
+      <label class="block text-gray-700">Calidad</label>
+      <select formControlName="calidad" class="w-full border p-2 rounded">
+        <option value="">Seleccione</option>
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
+      </select>
+    </div>-->
+
+
+    <button type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            [disabled]="beneficioForm.invalid">
+      Confirmar y Guardar
+    </button>
+  </form>
+</div>

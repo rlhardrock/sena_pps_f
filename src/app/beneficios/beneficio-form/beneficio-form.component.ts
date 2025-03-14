@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {BeneficiosService} from "../beneficios.service";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
@@ -7,9 +7,9 @@ import {CommonModule} from "@angular/common";
 @Component({
   selector: 'app-beneficio-form',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   templateUrl: './beneficio-form.component.html',
-  styleUrls: ['./beneficio-form.component.css']
+  styleUrls: ['./beneficio-form.component.css'],
 })
 export class BeneficioFormComponent implements OnInit {
   beneficioForm!: FormGroup;

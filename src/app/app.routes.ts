@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { BeneficioFormComponent } from './beneficios/beneficio-form/beneficio-form.component';
-import { BeneficioListComponent } from './beneficios/beneficio-list/beneficio-list.component';
-import { DashboardComponent } from "./dashboard/dashboard.component";
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'beneficios', component: BeneficioListComponent },
-  { path: 'beneficio/nuevo', component: BeneficioFormComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { 
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.routes').then(m => m.DashboardRoutingModule)
+  },
+  { 
+    path: 'beneficios',
+    loadChildren: () => import('./beneficios/beneficios.routes').then(m => m.BENEFICIOS_ROUTES)
+  },
+  { 
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.routes').then(m => m.AUTH_ROUTES)
+  },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -10,30 +10,30 @@ import {CommonModule} from "@angular/common";
     <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
       <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl text-center">
 
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Dashboard</h2>
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Tablero de Mando</h2>
         <p class="text-gray-600 mb-6">Bienvenido, <span class="font-bold">{{ user?.email || 'Usuario' }}</span></p>
 
         <!-- Botones principales -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <button
             class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition transform hover:scale-105"
-            (click)="navigateTo('beneficio')"
-            aria-label="Ir a Beneficio">
-            📊 Beneficio
+            (click)="navigateTo('usuarios')"
+            aria-label="Ir a Usuarios">
+            📊 Usuarios
           </button>
 
           <button
             class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition transform hover:scale-105"
-            (click)="navigateTo('area-sucia')"
-            aria-label="Ir a Área Sucia">
-            🏭 Área Sucia
+            (click)="navigateTo('beneficios')"
+            aria-label="Ir a Beneficios">
+            🏭 Beneficios
           </button>
 
           <button
             class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition transform hover:scale-105"
-            (click)="navigateTo('area-limpia')"
-            aria-label="Ir a Área Limpia">
-            🚛 Área Limpia
+            (click)="navigateTo('extras')"
+            aria-label="Ir a Extras">
+            🚛 Extras
           </button>
         </div>
 

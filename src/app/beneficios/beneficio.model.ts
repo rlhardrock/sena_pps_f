@@ -24,6 +24,8 @@ export interface Beneficio {
   aves_remisionadas: number;
   aves_colgadas: number;
   aves_asfixiadas: number;
+  aves_decomisadas: number;
+  aves_destrozadas: number;
   aves_en_guacal_extra: number;
   peso_1_guacal_vacio: number;
   peso_torre_7_guacales: number;

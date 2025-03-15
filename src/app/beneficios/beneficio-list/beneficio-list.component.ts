@@ -10,7 +10,7 @@ import {CommonModule} from "@angular/common";
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './beneficio-list.component.html',
-  styleUrl: './beneficio-list.component.css'
+  styleUrls: [],
 })
 
 export class BeneficioListComponent implements OnInit {

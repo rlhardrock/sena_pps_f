@@ -8,7 +8,7 @@ import {Beneficio} from "./beneficio.model";
   providedIn: 'root'
 })
 export class BeneficiosService {
-  private apiUrl = `${environment.apiUrl}/beneficios`;
+  private apiUrl = `${environment.apiUrl}/beneficio`;
 
   constructor(private http: HttpClient) {}
 
@@ -20,11 +20,19 @@ export class BeneficiosService {
     return this.http.get<string[]>(`${this.apiUrl}/remisiones`);
   }
 
-  listarTodosLosBeneficios(): Observable<Beneficio[]> {
-    return this.http.get<Beneficio[]>(this.apiUrl);
+  listarTodosLosBeneficios(page: number = 1, limit: number = 10): Observable<Beneficio[]> {
+    return this.http.get<Beneficio[]>(`${this.apiUrl}?page=${page}&limit=${limit}`);
   }
 
-  actualizarBeneficio(id_remision: string, beneficio: Beneficio): Observable<any> {
+  obtenerBeneficioPorRemision(id_remision: string): Observable<Beneficio> {
+    return this.http.get<Beneficio>(`${this.apiUrl}/${id_remision}`);
+  }
+
+  listarRemisionesPorEmpresa(id_empresa: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/empresas?id_empresa=${id_empresa}`);
+  }
+
+  actualizarBeneficio(id_remision: string, beneficio: Partial<Beneficio>): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${id_remision}`, beneficio);
   }
 

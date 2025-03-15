@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
         this.users = users;
         this.loading = false;
       },
-      error: (error) => {
+      error: (error: any) => {
         this.error = 'Error al cargar los usuarios. Por favor, intente de nuevo.';
         this.loading = false;
         console.error('Error loading users:', error);
@@ -46,7 +46,7 @@ export class UserListComponent implements OnInit {
         next: () => {
           this.users = this.users.filter(user => user.id !== id);
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error deleting user:', error);
           alert('Error al eliminar el usuario. Por favor, intente de nuevo.');
         }

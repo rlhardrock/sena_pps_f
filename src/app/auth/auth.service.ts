@@ -6,7 +6,7 @@ import { Observable, catchError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/avi/usuarios/email'; // Base URL para autenticación
+  private apiUrl = 'http://localhost:3000/avi/login'; // Base URL para autenticación
 
   constructor(private http: HttpClient) {}
 

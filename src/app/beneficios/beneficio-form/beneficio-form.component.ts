@@ -73,7 +73,7 @@ export class BeneficioFormComponent implements OnInit {
         response => {
           console.log('Guardado:', response);
           this.beneficioForm.reset();
-          this.router.navigate(['/beneficios']);
+          this.router.navigate(['/beneficios/resumen']);
         },
         error => {
           console.error('Error:', error);

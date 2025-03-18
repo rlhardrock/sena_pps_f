@@ -95,7 +95,7 @@ export class UserFormComponent implements OnInit {
 
     request.subscribe({
       next: () => {
-        this.router.navigate(['/users']);
+        this.router.navigate(['/users/resumen']);
       },
       error: (error) => {
         console.error('Error saving user:', error);

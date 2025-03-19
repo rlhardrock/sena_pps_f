@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {BeneficiosService} from "../beneficios.service";
-import {RouterModule, Router} from "@angular/router";
-import {CommonModule} from "@angular/common";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BeneficiosService } from "../beneficios.service";
+import { RouterModule, Router } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-beneficio-form',
@@ -16,10 +16,10 @@ export class BeneficioFormComponent implements OnInit {
   idsRemisiones: string[] = [];
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private beneficioService: BeneficiosService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.beneficioForm = this.fb.group({
@@ -73,7 +73,7 @@ export class BeneficioFormComponent implements OnInit {
         response => {
           console.log('Guardado:', response);
           this.beneficioForm.reset();
-          this.router.navigate(['/beneficios/resumen']);
+          this.router.navigate(['/beneficios/resumen']); // Navegar a beneficio-resumen
         },
         error => {
           console.error('Error:', error);

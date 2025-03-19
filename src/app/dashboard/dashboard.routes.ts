@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { BENEFICIOS_ROUTES } from '../beneficios/beneficios.routes';
 
-export const DASHBOARD_ROUTES: Routes = [
-  { 
-    path: '', 
-    component: DashboardComponent 
-  }
+const routes: Routes = [
+  { path: '', component: DashboardComponent },
+  ...BENEFICIOS_ROUTES // Integrar las rutas de beneficios aquí
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(DASHBOARD_ROUTES)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class AppRoutingModule { }

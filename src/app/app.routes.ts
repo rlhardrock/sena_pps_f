@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   // Ruta para redirigir a dashboard
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, 
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // Ruta para el dashboard
   { path: 'dashboard', component: DashboardComponent },
 
@@ -20,16 +20,11 @@ export const routes: Routes = [
   { path: 'user/nuevo', loadComponent: () => import('./users/user-form/user-form.component').then(m => m.UserFormComponent) }, // Carga el formulario
   { path: 'user/editar/:id', loadComponent: () => import('./users/user-form/user-form.component').then(m => m.UserFormComponent) }, // Carga el formulario
 
-  // Rutas para extras
-  /* { path: 'extra', loadComponent: () => import('./extras/extra-list.component').then(m => m.ExtraListComponent) }, // Carga el formulario
-  { path: 'extra/nuevo', loadComponent: () => import('./extras/extra-form.component').then(m => m.ExtraFormComponent) }, // Carga el formulario
-  { path: 'extra/editar/:id', loadComponent: () => import('./extras/extra-form.component').then(m => m.ExtraFormComponent) }, // Carga el formulario */
-
-  { path: '**', redirectTo: '/dashboard' } 
+  { path: '**', redirectTo: '/dashboard' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutes {}
+export class AppRoutes { }

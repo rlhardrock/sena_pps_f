@@ -24,11 +24,11 @@ export class UserFormComponent implements OnInit {
     private usersService: UsersService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
-    
+
     // Verificar si estamos en modo edición
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
@@ -44,8 +44,8 @@ export class UserFormComponent implements OnInit {
       apellido: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', this.isEditMode ? [] : [Validators.required, Validators.minLength(6)]],
-      rol: ['user', Validators.required],
-      estado: [true, Validators.required]
+      rol: ['Supervisor', Validators.required],
+      estado: ['Habilitado', Validators.required]
     });
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../users.service';
 import { User } from '../user.model';
@@ -17,7 +17,7 @@ export class UserListComponent implements OnInit {
   loading = false;
   error = '';
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
   loadUsers(): void {
     this.loading = true;
     this.error = '';
-    
+
     this.usersService.getUsers().subscribe({
       next: (users) => {
         this.users = users;
@@ -52,5 +52,9 @@ export class UserListComponent implements OnInit {
         }
       });
     }
+  }
+
+  navigateToNewUser(): void {
+    this.router.navigate(['/user/nuevo']);
   }
 }

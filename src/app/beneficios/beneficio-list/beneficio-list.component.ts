@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {BeneficiosService} from "../beneficios.service";
-import {Beneficio} from "../beneficio.model";
-import {FormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
-import {CommonModule} from "@angular/common";
+import { Component, OnInit } from '@angular/core';
+import { BeneficiosService } from "../beneficios.service";
+import { Beneficio } from "../beneficio.model";
+import { FormsModule } from "@angular/forms";
+import { RouterModule, Router } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-beneficio-list',
@@ -17,7 +17,7 @@ export class BeneficioListComponent implements OnInit {
   beneficios: Beneficio[] = [];
   selectedBeneficio: Beneficio | null = null;
 
-  constructor(private beneficiosService: BeneficiosService) {}
+  constructor(private beneficiosService: BeneficiosService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadBeneficios();
@@ -45,5 +45,9 @@ export class BeneficioListComponent implements OnInit {
 
   closeModal() {
     this.selectedBeneficio = null;
+  }
+
+  crearNuevoBeneficio() {
+    this.router.navigate(['/beneficio/nuevo']);
   }
 }

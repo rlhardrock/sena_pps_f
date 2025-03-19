@@ -36,4 +36,8 @@ export class BeneficiosService {
     return this.http.patch(`${this.apiUrl}/${id_remision}`, beneficio);
   }
 
+  getBeneficio(): Observable<Beneficio> {
+    return this.http.get<Beneficio>(`${this.apiUrl}`);
+  }
+
 }

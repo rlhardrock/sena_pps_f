@@ -1,6 +1,10 @@
 <h1>Resumen del Beneficio</h1>
-<div>
-    <p>Aquí se mostrará el resumen del beneficio.</p>
-    <!-- Agregar más detalles según sea necesario -->
-    <button (click)="goToBeneficioList()">Ir a la Lista de Beneficios</button>
+<div *ngIf="beneficio">
+    <p><strong>ID:</strong> {{ beneficio.id }}</p>
+    <p><strong>Nombre:</strong> {{ beneficio.nombre }}</p>
+    <p><strong>Descripción:</strong> {{ beneficio.descripcion }}</p>
+    <p><strong>Estado:</strong> {{ beneficio.estado }}</p>
+    <!-- Agrega más campos según sea necesario -->
 </div>
+
+<button (click)="goToBeneficioList()">Ir a la Lista de Beneficios</button>

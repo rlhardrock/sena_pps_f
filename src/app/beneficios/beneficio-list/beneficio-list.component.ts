@@ -16,6 +16,7 @@ import { CommonModule } from "@angular/common";
 export class BeneficioListComponent implements OnInit {
   beneficios: Beneficio[] = [];
   selectedBeneficio: Beneficio | null = null;
+  idRemision: string = ''; // Nueva propiedad para el ID de Remisión
 
   constructor(private beneficiosService: BeneficiosService, private router: Router) { }
 
@@ -49,5 +50,21 @@ export class BeneficioListComponent implements OnInit {
 
   crearNuevoBeneficio() {
     this.router.navigate(['/beneficio/nuevo']);
+  }
+
+  buscarBeneficio() {
+    if (this.idRemision) {
+      this.beneficiosService.obtenerBeneficioPorRemision(this.idRemision).subscribe(
+        beneficio => {
+          console.log('Beneficio encontrado:', beneficio);
+          // Aquí puedes agregar lógica para mostrar el beneficio encontrado en la UI
+        },
+        error => {
+          console.error('Error al buscar el beneficio:', error);
+        }
+      );
+    } else {
+      alert('Por favor, ingrese un ID de Remisión.');
+    }
   }
 }

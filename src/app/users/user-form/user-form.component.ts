@@ -40,12 +40,12 @@ export class UserFormComponent implements OnInit {
 
   private initForm(): void {
     this.userForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(2)]],
-      apellido: ['', [Validators.required, Validators.minLength(2)]],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', this.isEditMode ? [] : [Validators.required, Validators.minLength(6)]],
-      rol: ['Supervisor', Validators.required],
-      estado: ['Habilitado', Validators.required]
+      rol: [Validators.required],
+      estado: [Validators.required]
     });
   }
 

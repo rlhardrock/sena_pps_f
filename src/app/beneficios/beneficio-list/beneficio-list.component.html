@@ -2,8 +2,25 @@
   <h2 class="text-xl font-bold mb-4">Lista de Beneficios Realizados</h2>
 
   <!-- Botón para crear nuevo beneficio -->
-  <div class="mb-4 text-right">
-    <button (click)="crearNuevoBeneficio()" routerLink="/beneficios/nuevo" class="bg-blue-600 text-white px-4 py-2 rounded">
+  <div class="mb-4 text-center">
+    <div class="flex justify-center gap-4 mb-2">
+      <input
+        type="text"
+        placeholder="Buscar por ID Remisión"
+        [(ngModel)]="idRemision"
+        class="border p-2 rounded w-64"
+      />
+      <button
+        (click)="buscarBeneficio()"
+        class="bg-blue-600 text-white px-4 py-2 rounded">
+        Buscar
+      </button>
+    </div>
+
+    <button
+      (click)="crearNuevoBeneficio()"
+      routerLink="/beneficios/nuevo"
+      class="bg-green-600 text-white px-4 py-2 rounded">
       + Crear Nuevo Beneficio
     </button>
   </div>
@@ -11,22 +28,22 @@
   <!-- Tabla de beneficios -->
   <table class="w-full border-collapse border border-gray-300">
     <thead>
-    <tr class="bg-gray-200">
-      <th class="border p-2">ID Remisión</th>
-      <th class="border p-2">ID Empresa</th>
-      <th class="border p-2">Auditor</th>
-      <th class="border p-2">Acciones</th>
-    </tr>
+      <tr class="bg-gray-200">
+        <th class="border p-2">ID Remisión</th>
+        <th class="border p-2">ID Empresa</th>
+        <th class="border p-2">Auditor</th>
+        <th class="border p-2">Acciones</th>
+      </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let beneficio of beneficios" class="hover:bg-gray-100">
-      <td class="border p-2 text-center">{{ beneficio.id_remision }}</td>
-      <td class="border p-2 text-center">{{ beneficio.id_empresa }}</td>
-      <td class="border p-2 text-center">{{ beneficio.nombre_auditor }}</td>
-      <td class="border p-2 text-center">
-        <button (click)="selectBeneficio(beneficio)" class="bg-blue-500 text-white px-2 py-1 rounded">Editar</button>
-      </td>
-    </tr>
+      <tr *ngFor="let beneficio of beneficios" class="hover:bg-gray-100">
+        <td class="border p-2 text-center">{{ beneficio.id_remision }}</td>
+        <td class="border p-2 text-center">{{ beneficio.id_empresa }}</td>
+        <td class="border p-2 text-center">{{ beneficio.nombre_auditor }}</td>
+        <td class="border p-2 text-center">
+          <button (click)="selectBeneficio(beneficio)" class="bg-blue-500 text-white px-2 py-1 rounded">Editar</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 
@@ -42,7 +59,6 @@
         <button (click)="closeModal()" class="bg-gray-500 text-white px-3 py-2 rounded">Cancelar</button>
         <button (click)="updateBeneficio()" class="bg-green-500 text-white px-3 py-2 rounded">Actualizar Cambios</button>
       </div>
-
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BeneficiosService } from '../beneficios.service';
-import { Beneficio } from './beneficio.model'; // Asegúrate de que la ruta sea correcta
+import { Beneficio } from '../beneficio.model'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-beneficio-resumen',

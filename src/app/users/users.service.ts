@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.model';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod'; // Cambiar a environment.prod
 
 @Injectable({
   providedIn: 'root'

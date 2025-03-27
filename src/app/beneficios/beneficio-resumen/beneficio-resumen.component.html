@@ -1,10 +1,34 @@
 <h1>Resumen del Beneficio</h1>
 <div *ngIf="beneficio">
-    <p><strong>ID:</strong> {{ beneficio.id }}</p>
-    <p><strong>Nombre:</strong> {{ beneficio.nombre }}</p>
-    <p><strong>Descripción:</strong> {{ beneficio.descripcion }}</p>
-    <p><strong>Estado:</strong> {{ beneficio.estado }}</p>
-    <!-- Agrega más campos según sea necesario -->
+  <p><strong>ID Remisión:</strong> {{ beneficio?.id_remision }}</p>
+  <p><strong>ID Empresa:</strong> {{ beneficio?.id_empresa }}</p>
+  <p><strong>Región Procedencia:</strong> {{ beneficio?.region_procedencia }}</p>
+  <p><strong>Granja:</strong> {{ beneficio?.granja }}</p>
+  <p><strong>Galpón:</strong> {{ beneficio?.galpon }}</p>
+  <p><strong>Línea Aves:</strong> {{ beneficio?.linea_aves }}</p>
+  <p><strong>Sexo:</strong> {{ beneficio?.sexo }}</p>
+  <p><strong>Edad:</strong> {{ beneficio?.edad }}</p>
+  <p><strong>Peso Promedio Ave Granja:</strong> {{ beneficio?.peso_promedio_ave_granja }}</p>
+  <p><strong>Placa Vehículo:</strong> {{ beneficio?.placa_vehiculo }}</p>
+  <p><strong>ID Conductor:</strong> {{ beneficio?.id_conductor }}</p>
+  <p><strong>Nombre Conductor:</strong> {{ beneficio?.nombre_conductor }}</p>
+  <p><strong>ID Plan Sanitario:</strong> {{ beneficio?.id_plan_sanitario }}</p>
+  <p><strong>TP Profesional Granja:</strong> {{ beneficio?.tp_profesional_granja }}</p>
+  <p><strong>Nombre Profesional Granja:</strong> {{ beneficio?.nombre_profesional }}</p>
+  <p><strong>TP Profesional Planta:</strong> {{ beneficio?.tp_profesional_planta }}</p>
+  <p><strong>Nombre Auditor:</strong> {{ beneficio?.nombre_auditor }}</p>
+  <p><strong>Hora Beneficio:</strong> {{ beneficio?.hora_beneficio }}</p>
+  <p><strong>Aves por Guacal:</strong> {{ beneficio?.aves_por_guacal }}</p>
+  <p><strong>Guacales Vacíos:</strong> {{ beneficio?.guacales_vacios }}</p>
+  <p><strong>Guacales Usados:</strong> {{ beneficio?.guacales_usados }}</p>
+  <p><strong>Guacal Extra:</strong> {{ beneficio?.guacal_extra }}</p>
+  <p><strong>Aves Remisionadas:</strong> {{ beneficio?.aves_remisionadas }}</p>
+  <p><strong>Aves Colgadas:</strong> {{ beneficio?.aves_colgadas }}</p>
+  <p><strong>Aves Asfixiadas:</strong> {{ beneficio?.aves_asfixiadas }}</p>
+  <p><strong>Aves Decomisadas:</strong> {{ beneficio?.aves_decomisadas }}</p>
+  <p><strong>Aves Destrozadas:</strong> {{ beneficio?.aves_destrozadas }}</p>
+  <p><strong>Aves en Guacal Extra:</strong> {{ beneficio?.aves_en_guacal_extra }}</p>
+  <p><strong>Peso 1 Guacal Vacío:</strong> {{ beneficio?.peso_1_guacal_vacio }}</p>
+  <p><strong>Peso Torre 7 Guacales:</strong> {{ beneficio?.peso_torre_7_guacales }}</p>
 </div>
-
 <button (click)="goToBeneficioList()">Ir a la Lista de Beneficios</button>

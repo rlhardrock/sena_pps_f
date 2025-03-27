@@ -19,13 +19,8 @@ export class BeneficioListComponent implements OnInit {
   idRemision: string = ''; // Nueva propiedad para el ID de Remisión
 
   constructor(private beneficiosService: BeneficiosService, private router: Router) { }
-
-  ngOnInit(): void {
-    this.loadBeneficios();
-  }
-
-  loadBeneficios() {
-    this.beneficiosService.listarTodosLosBeneficios().subscribe(data => {
+  ngOnInit() {
+    this.beneficiosService.getAllBeneficios().subscribe(data => {
       this.beneficios = data;
     });
   }
@@ -36,12 +31,18 @@ export class BeneficioListComponent implements OnInit {
 
   updateBeneficio() {
     if (this.selectedBeneficio) {
-      this.beneficiosService.actualizarBeneficio(this.selectedBeneficio.id_remision, this.selectedBeneficio)
+      this.beneficiosService.updateBeneficio(this.selectedBeneficio.id_remision, this.selectedBeneficio)
         .subscribe(() => {
           this.loadBeneficios(); // Refrescar la lista
           this.selectedBeneficio = null; // Cerrar el modal
         });
     }
+  }
+
+  loadBeneficios() {
+    this.beneficiosService.getAllBeneficios().subscribe(data => {
+      this.beneficios = data;
+    });
   }
 
   closeModal() {
@@ -54,7 +55,7 @@ export class BeneficioListComponent implements OnInit {
 
   buscarBeneficio() {
     if (this.idRemision) {
-      this.beneficiosService.obtenerBeneficioPorRemision(this.idRemision).subscribe(
+      this.beneficiosService.getBeneficioPorRemision(this.idRemision).subscribe(
         beneficio => {
           console.log('Beneficio encontrado:', beneficio);
           // Aquí puedes agregar lógica para mostrar el beneficio encontrado en la UI

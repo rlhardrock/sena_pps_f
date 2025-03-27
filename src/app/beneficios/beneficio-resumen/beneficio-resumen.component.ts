@@ -17,8 +17,8 @@ export class BeneficioResumenComponent implements OnInit {
   }
 
   getBeneficioResumen() {
-    this.beneficiosService.getBeneficio().subscribe(data => {
-      this.beneficio = data; 
+    this.beneficiosService.getAllBeneficios().subscribe(data => {
+      this.beneficio = data;
     });
   }
 

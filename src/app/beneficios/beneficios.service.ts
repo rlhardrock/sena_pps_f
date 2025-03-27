@@ -35,9 +35,10 @@ export class BeneficiosService {
     return this.http.get(`${this.apiUrl}/remisiones`);
   }
 
-  listarTodasLasRemisiones(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}/remisiones`);
+  listarTodasLasRemisiones(): Observable<{ id_remision: string }[]> {
+    return this.http.get<{ id_remision: string }[]>(`${this.apiUrl}/remisiones`);
   }
+   
 
   // Obtener remisiones por empresa
   getRemisionesPorEmpresa(id_empresa: string): Observable<any> {
@@ -62,8 +63,8 @@ export class BeneficiosService {
     return this.http.post(`${this.apiUrl}`, data);
   }
 
-  crearBeneficio(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, data);
+  crearBeneficio(beneficioData: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, beneficioData);
   }
 
   // Actualizar un beneficio existente

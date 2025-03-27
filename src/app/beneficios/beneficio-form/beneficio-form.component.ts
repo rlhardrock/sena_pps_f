@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { BeneficiosService } from "../beneficios.service";
-import { RouterModule, Router } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-beneficio-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './beneficio-form.component.html',
   styleUrls: [],
 })
 export class BeneficioFormComponent implements OnInit {
   beneficioForm!: FormGroup;
-  idsRemisiones: string[] = [];
+  remisiones: { id_remision: string }[] = [];
 
   constructor(
-    private fb: FormBuilder,
-    private beneficioService: BeneficiosService,
+    private fb: FormBuilder, // Inyección de FormBuilder
+    private beneficiosService: BeneficiosService,
     private router: Router
   ) { }
 
@@ -55,32 +55,27 @@ export class BeneficioFormComponent implements OnInit {
       peso_torre_7_guacales: [null, [Validators.required]],
     });
 
-    // Cargar lista de ID de remisión desde el backend
-    this.beneficioService.listarTodasLasRemisiones().subscribe(data => {
-      this.idsRemisiones = data;
-    })
+    this.obtenerRemisiones();
   }
 
   onSubmit() {
     if (this.beneficioForm.valid) {
-      let formData = { ...this.beneficioForm.value };
+      const formData = { ...this.beneficioForm.value };
 
       // Formatear la fecha a 'YYYY-MM-DD HH:mm'
       const fecha = new Date(formData.hora_beneficio);
       formData.hora_beneficio = fecha.toISOString().slice(0, 16).replace("T", " ");
 
-      this.beneficioService.crearBeneficio(formData).subscribe(
-        response => {
-          console.log('Guardado:', response);
+      this.beneficiosService.createBeneficio(formData).subscribe({
+        next: () => {
           this.beneficioForm.reset();
-          this.router.navigate(['/beneficios/resumen']); // Navegar a beneficio-resumen
+          this.router.navigate(['/beneficios/resumen']);
         },
-        error => {
-          console.error('Error:', error);
+        error: (error) => {
+          console.error('Error al guardar beneficio:', error);
         }
-      );
+      });
     } else {
-      // Marcar todos los campos como tocados para mostrar errores
       Object.keys(this.beneficioForm.controls).forEach(key => {
         const control = this.beneficioForm.get(key);
         control?.markAsTouched();
@@ -91,5 +86,16 @@ export class BeneficioFormComponent implements OnInit {
   cancelar() {
     this.beneficioForm.reset();
     this.router.navigate(['/beneficios']);
+  }
+
+  obtenerRemisiones() {
+    this.beneficiosService.listarTodasLasRemisiones().subscribe({
+      next: (data) => {
+        this.remisiones = data;
+      },
+      error: (error) => {
+        console.error('Error al obtener remisiones:', error);
+      }
+    });
   }
 }
